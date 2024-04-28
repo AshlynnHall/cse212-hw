@@ -39,7 +39,22 @@ public static class ArraysTester {
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return new double[0]; // replace this return statement with your own
+        // created an empty list to store the multiples
+        List<double> multiplesList = new List<double>();
+
+        // tell it how long to keep supplying multiples
+        for (int i = 1; i <= length; i++)
+        {
+            // multiply the multiple until you reach the number provided
+            double multiple = number * i;
+            
+            // put those multiples in a list
+            multiplesList.Add(multiple);
+        }
+
+        // turn the list to an array and return it
+        return multiplesList.ToArray();
+
     }
     
     /// <summary>
@@ -56,6 +71,21 @@ public static class ArraysTester {
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+        
+        // calculate how many times we need to turn
+        int effectiveAmount = amount % data.Count;
 
+        // make a copy of our list
+        List<int> rotatedList = new List<int>(data);
+
+        // chop off unnecessary bits from the end
+        rotatedList.RemoveRange(data.Count - effectiveAmount, effectiveAmount);
+
+        // stick those bits at the beginning
+        rotatedList.InsertRange(0, data.GetRange(data.Count - effectiveAmount, effectiveAmount));
+
+        // replace the original list with the modified one
+        data.Clear();
+        data.AddRange(rotatedList);
     }
 }
