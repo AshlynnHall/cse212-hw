@@ -15,7 +15,8 @@
         // Console.WriteLine(players);    // This can be un-commented out for debug help
         while (players.Length > 0)
             players.GetNextPerson();
-        // Defect(s) Found: 
+        // Defect(s) Found: The individuals are not being requeued, instead
+        //                  when they're reaching the end, they're just taken out of the queue.
 
         Console.WriteLine("---------");
 
@@ -38,7 +39,7 @@
         while (players.Length > 0)
             players.GetNextPerson();
 
-        // Defect(s) Found: 
+        // Defect(s) Found: I think that the issue was the same as the first one, so no errors happened.
 
         Console.WriteLine("---------");
 
@@ -56,7 +57,8 @@
             players.GetNextPerson();
             // Console.WriteLine(players);
         }
-        // Defect(s) Found: 
+        // Defect(s) Found: Tim was supposed to repeat but instead he only appeared once and 'no one in the queue'
+        //                  repeated four times.
 
         Console.WriteLine("---------");
 
@@ -73,7 +75,7 @@
             players.GetNextPerson();
             // Console.WriteLine(players);
         }
-        // Defect(s) Found: 
+        // Defect(s) Found: Repeats of no one in the queue, but after fixing test 3 it runs fine.
 
         Console.WriteLine("---------");
 
@@ -83,6 +85,6 @@
         Console.WriteLine("Test 5");
         players = new TakingTurnsQueue();
         players.GetNextPerson();
-        // Defect(s) Found:
+        // Defect(s) Found: No defects found.
     }
 }

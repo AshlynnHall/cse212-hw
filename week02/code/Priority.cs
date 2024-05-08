@@ -8,20 +8,36 @@
         // Test Cases
 
         // Test 1
-        // Scenario: 
-        // Expected Result: 
+        // Scenario: I will enqueue 3 items.
+        // Expected Result: Ashlynn (Pri:1), Amanda (Pri:2), Sylisa (Pri:3)
         Console.WriteLine("Test 1");
 
-        // Defect(s) Found: 
+        priorityQueue.Enqueue("Ashlynn", 1);
+        priorityQueue.Enqueue("Amanda", 2);
+        priorityQueue.Enqueue("Sylisa", 3);
+
+        Console.WriteLine(priorityQueue);
+
+
+        // Defect(s) Found: No errors
 
         Console.WriteLine("---------");
 
         // Test 2
-        // Scenario: 
+        // Scenario: It will dequeue and it will show nothing.
         // Expected Result: 
         Console.WriteLine("Test 2");
+        priorityQueue.Dequeue();
+        priorityQueue.Dequeue();
+        priorityQueue.Dequeue();
 
-        // Defect(s) Found: 
+        if (priorityQueue == null) {
+            Console.WriteLine("The queue is empty.");
+        }
+        else {Console.WriteLine(priorityQueue);
+        }
+
+        // Defect(s) Found: I couldn't get it to print 'The queue is empty'
 
         Console.WriteLine("---------");
 
