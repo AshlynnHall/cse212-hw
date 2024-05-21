@@ -110,6 +110,16 @@ public static class SetsAndMapsTester {
     private static void DisplayPairs(string[] words) {
         // To display the pair correctly use something like:
         // Console.WriteLine($"{word} & {pair}");
+        var pairs = new HashSet<string>(words);
+        foreach (string word in pairs) {
+            if (word[0] != word[1]) {
+                string pair = "" + word [1] + word[0];
+                if (pairs.Contains(pair)) {
+                    pairs.Remove(pair);
+                    Console.WriteLine($"{word} & {pair}");
+                }
+            }
+        }
         // Each pair of words should displayed on its own line.
     }
 
@@ -132,6 +142,13 @@ public static class SetsAndMapsTester {
         foreach (var line in File.ReadLines(filename)) {
             var fields = line.Split(",");
             // Todo Problem 2 - ADD YOUR CODE HERE
+            if(!degrees.ContainsKey(fields[3])) {
+                degrees[fields[3]] = 1;
+            } 
+            
+            else {
+                degrees[fields[3]]++;
+            }
         }
 
         return degrees;
@@ -158,7 +175,57 @@ public static class SetsAndMapsTester {
     /// #############
     private static bool IsAnagram(string word1, string word2) {
         // Todo Problem 3 - ADD YOUR CODE HERE
-        return false;
+        word1 = word1.ToLower();
+        word2 = word2.ToLower();
+        var length1 = word1.Length;
+        var length2 = word2.Length;
+        int length;
+        if (length1 > length2) {
+            length = length1;
+        }
+        else if (length2 > length1) {
+            length = length2;
+        }
+        else {
+            length = length1;
+        }
+        var dict1 = new Dictionary<string, int>();
+        var dict2 = new Dictionary<string, int>();
+        for (int i = 0; i < length; i++) {
+            if (i < length1){
+                var character1 = word1[i].ToString();
+                if (character1 != "") {
+                    if (dict1.ContainsKey(character1)) {
+                        dict1[character1] += 1;
+                    }
+                    else {
+                        dict1[character1] = 1;
+                    }
+                }
+            }
+            if (i < length2){
+                var character2 = word2[i].ToString();
+                if (character2 != "") {
+                    if (dict2.ContainsKey(character2)) {
+                        dict2[character2] += 1;
+                    }
+                    else {
+                        dict2[character2] = 1;
+                    }
+                }
+            }
+        }
+        foreach (var dict in dict1){
+            if (dict2.ContainsKey(dict.Key)){
+                if (dict2[dict.Key] != dict1[dict.Key]) {
+                    return false;
+                }
+            }
+            else {
+                return false;
+            }
+        }
+        return true;
     }
 
     /// <summary>

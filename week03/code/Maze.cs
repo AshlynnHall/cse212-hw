@@ -1,3 +1,5 @@
+using System.Xml.Schema;
+
 /// <summary>
 /// Defines a maze using a dictionary. The dictionary is provided by the
 /// user when the Maze object is created. The dictionary will contain the
@@ -30,6 +32,13 @@ public class Maze {
     /// </summary>
     public void MoveLeft() {
         // FILL IN CODE
+        var goLeft = _mazeMap [(_currX, _currY)];
+        if(goLeft[0] == true){
+            _currX--;
+        }
+        else {
+            Console.WriteLine("Can't go that way!");
+        }
     }
 
     /// <summary>
@@ -38,6 +47,13 @@ public class Maze {
     /// </summary>
     public void MoveRight() {
         // FILL IN CODE
+        var goRight = _mazeMap [(_currX, _currY)];
+        if(goRight[1] == true){
+            _currX++;
+        }
+        else {
+            Console.WriteLine("Can't go that way!");
+        }
     }
 
     /// <summary>
@@ -46,6 +62,13 @@ public class Maze {
     /// </summary>
     public void MoveUp() {
         // FILL IN CODE
+        var goUp = _mazeMap [(_currX, _currY)];
+        if(goUp[2] == true){
+            _currY--;
+        }
+        else {
+            Console.WriteLine("Can't go that way!");
+        }
     }
 
     /// <summary>
@@ -54,6 +77,13 @@ public class Maze {
     /// </summary>
     public void MoveDown() {
         // FILL IN CODE
+        var goDown = _mazeMap [(_currX, _currY)];
+        if(goDown[3] == true){
+            _currY++;
+        }
+        else {
+            Console.WriteLine("Can't go that way!");
+        }
     }
 
     public void ShowStatus() {
